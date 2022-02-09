@@ -1,4 +1,3 @@
-//
 const fs = require('fs');
 
 // Write File functions for passing in all captured information and file content, creating the file, and sending it into the dist folder.
@@ -15,7 +14,7 @@ const writeFile = fileContent => {
 
             // if everything went well resolve the prmoise and send the successful data to the `.then()` method
             resolve({
-                ok: true
+                ok: true,
                 message: 'ReadMe Created!'
             });
         });

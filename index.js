@@ -10,8 +10,11 @@
 // THEN I am taken to the corresponding section of the README
 
 // Calling for inquirer NPM and assinging it
+const { writeFile } = require('./utils/generate-readme.js')
+const fs = require("fs");
 const inquirer = require('inquirer');
-const { measureMemory } = require('vm');
+const generateReadme = require("./src/README-template.js")
+
 
 // Function used to prompt users questions
 const promptUser = () => {
@@ -65,6 +68,19 @@ const promptUser = () => {
             }
         },
         {
+            type: "list",
+            name: "license",
+            message: "Chose the license for this project: ",
+            choices: [
+                "Apache",
+                "Academic",
+                "GNU",
+                "MIT",
+                'Mozilla',
+                "Open"
+            ]
+        },
+        {
             type: 'input',
             name: "contribution",
             message: "What are the contribution guidelines? (Required)",
@@ -87,8 +103,30 @@ const promptUser = () => {
                     console.log('Please enter usage information!')
                 }
             }
+        },
+        {
+            type: "input",
+            name: "username",
+            message: "Please enter your GitHub username: "
+        },
+        {
+            type: "input",
+            name: "email",
+            message: "Please enter your email: "
         }
-    ])
+    ]);
 }
 
 promptUser()
+    .then(readMeData => {
+        if (!readMeData.projects) {
+            readMeData.projects = [];
+        }
+        return generateReadme(readMeData);
+    })
+    .then(readMePage => {
+        return writeFile(readMePage);
+    })
+    .catch(err => {
+        console.log(err);
+    });

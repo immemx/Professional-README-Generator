@@ -1,43 +1,49 @@
+const fs = require('fs');
 
-
-// Create function to generate entire page
-module.exports = templateData => {
-    // destructure page data by section
-    const {} = templateData;
-
+var generateReadme = (answers) => {
     return `
-    # ${projectTitle}
+# ${answers.projectTitle}
+    
+![badge](https://img.shields.io/badge/license-${answers.license}-brightgreen)<br />
+    
+## Description
 
-    ${description}
+${answers.description}
 
-    ## Table of Contents
+## Table of Contents
+- [Description](#description)
+- [Installation](#installation)
+- [Usage](#usage)
+- [License](#license)
+- [Contributing](#contributing)
+- [Tests](#tests)
+- [Questions](#questions)
 
-    1. [Installation](#installation) 
-    2. [Usage](#usage)
-    3. [Contribution Guidlines](#contribution guidelines)
-    4. [Test Instructions](#test instructions)
-    5. [License](#license)
+## Installation
 
-    ## Installation
+${answers.install}
 
-    ${install}
+## Usage
 
-    ## Usage
+${answers.usage}
 
-    ${usage}
+## License
 
-    ## Contribution Guidelines
+![badge](https://img.shields.io/badge/license-${answers.license}-brightgreen)
+This application is covered by the ${answers.license} license. 
 
-    ${contribution}
+## Contributing
 
-    ## Test Instructions
+${answers.contribution}
 
-    ${test}
+## Tests
 
-    ## License
+${answers.test}
 
-    ${license}
+Find me on GitHub: [${answers.username}](https://github.com/${answers.username})
 
-
-    `;
-};
+Email me with any questions: ${answers.email}
+`
+  }
+  
+  module.exports = generateReadme;
