@@ -40,6 +40,8 @@ ${answers.contribution}
 
 ${answers.test}
 
+## Questions
+
 Find me on GitHub: [${answers.username}](https://github.com/${answers.username})
 
 Email me with any questions: ${answers.email}
