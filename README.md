@@ -14,6 +14,8 @@ A simply to use Node.js project to create a README for projects
 
 ## Installation
 
+Video HOWTO: https://youtu.be/grd_FA6xg0g
+
 To install the program use the following steps. (NOTE: MUST HAVE NODE.JS INSTALLED)
 
 1. Clone the repo to your local machine
